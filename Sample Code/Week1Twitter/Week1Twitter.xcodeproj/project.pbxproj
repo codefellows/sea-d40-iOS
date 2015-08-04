@@ -19,6 +19,8 @@
 		A231DC5D1B7031350095F76B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231DC5C1B7031350095F76B /* ViewController.swift */; };
 		A231DC5F1B70313A0095F76B /* instagram.json in Resources */ = {isa = PBXBuildFile; fileRef = A231DC5E1B70313A0095F76B /* instagram.json */; };
 		A231DC611B70313E0095F76B /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = A231DC601B70313E0095F76B /* tweet.json */; };
+		A231DC631B71614A0095F76B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231DC621B71614A0095F76B /* LoginService.swift */; };
+		A231DC651B7169290095F76B /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231DC641B7169290095F76B /* TwitterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		A231DC5C1B7031350095F76B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A231DC5E1B70313A0095F76B /* instagram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instagram.json; sourceTree = "<group>"; };
 		A231DC601B70313E0095F76B /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tweet.json; sourceTree = "<group>"; };
+		A231DC621B71614A0095F76B /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		A231DC641B7169290095F76B /* TwitterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 			children = (
 				A231DC341B7031170095F76B /* AppDelegate.swift */,
 				A231DC5C1B7031350095F76B /* ViewController.swift */,
+				A231DC641B7169290095F76B /* TwitterService.swift */,
+				A231DC621B71614A0095F76B /* LoginService.swift */,
 				A231DC541B7031240095F76B /* Post.swift */,
 				A231DC551B7031240095F76B /* PostJSONParser.swift */,
 				A231DC581B70312A0095F76B /* Tweet.swift */,
@@ -235,9 +241,11 @@
 				A231DC5D1B7031350095F76B /* ViewController.swift in Sources */,
 				A231DC571B7031240095F76B /* PostJSONParser.swift in Sources */,
 				A231DC5A1B70312A0095F76B /* Tweet.swift in Sources */,
+				A231DC651B7169290095F76B /* TwitterService.swift in Sources */,
 				A231DC5B1B70312A0095F76B /* TweetJSONParser.swift in Sources */,
 				A231DC561B7031240095F76B /* Post.swift in Sources */,
 				A231DC351B7031170095F76B /* AppDelegate.swift in Sources */,
+				A231DC631B71614A0095F76B /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +443,7 @@
 				A231DC501B7031170095F76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A231DC511B7031170095F76B /* Build configuration list for PBXNativeTarget "Week1TwitterTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +452,7 @@
 				A231DC531B7031170095F76B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,9 +9,11 @@
 import Foundation
 
 struct Tweet {
-  let text : String?
-  let author : String
+  let text : String
+  let id : String
+  let username : String
+  let profileImageURL : String
 }
 
-let tweet = Tweet(text: "BLAH BLAH", author: "BRAD")
+
 
