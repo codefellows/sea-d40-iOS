@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A21F46731B72AB6E00B9FA57 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F46721B72AB6E00B9FA57 /* TweetCell.swift */; };
 		A231DC351B7031170095F76B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A231DC341B7031170095F76B /* AppDelegate.swift */; };
 		A231DC3A1B7031170095F76B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A231DC381B7031170095F76B /* Main.storyboard */; };
 		A231DC3C1B7031170095F76B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A231DC3B1B7031170095F76B /* Images.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A21F46721B72AB6E00B9FA57 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		A231DC2F1B7031170095F76B /* Week1Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week1Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A231DC331B7031170095F76B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A231DC341B7031170095F76B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				A231DC341B7031170095F76B /* AppDelegate.swift */,
 				A231DC5C1B7031350095F76B /* ViewController.swift */,
+				A21F46721B72AB6E00B9FA57 /* TweetCell.swift */,
 				A231DC641B7169290095F76B /* TwitterService.swift */,
 				A231DC621B71614A0095F76B /* LoginService.swift */,
 				A231DC541B7031240095F76B /* Post.swift */,
@@ -241,6 +244,7 @@
 				A231DC5D1B7031350095F76B /* ViewController.swift in Sources */,
 				A231DC571B7031240095F76B /* PostJSONParser.swift in Sources */,
 				A231DC5A1B70312A0095F76B /* Tweet.swift in Sources */,
+				A21F46731B72AB6E00B9FA57 /* TweetCell.swift in Sources */,
 				A231DC651B7169290095F76B /* TwitterService.swift in Sources */,
 				A231DC5B1B70312A0095F76B /* TweetJSONParser.swift in Sources */,
 				A231DC561B7031240095F76B /* Post.swift in Sources */,
