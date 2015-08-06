@@ -36,41 +36,23 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qRS-jW-s4V">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="100" id="M3e-D9-nqq" customClass="TweetCell" customModule="Week1Twitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3e-D9-nqq" id="90D-eF-lQM">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfi-ZV-Ooe">
-                                                    <rect key="frame" x="8" y="8" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7V-a3-CYT">
-                                                    <rect key="frame" x="8" y="28" width="584" height="63"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="W7V-a3-CYT" firstAttribute="bottom" secondItem="90D-eF-lQM" secondAttribute="bottomMargin" id="6m2-KD-kYd"/>
-                                                <constraint firstItem="W7V-a3-CYT" firstAttribute="top" secondItem="hfi-ZV-Ooe" secondAttribute="bottom" id="AMG-qW-LGv"/>
-                                                <constraint firstItem="hfi-ZV-Ooe" firstAttribute="leading" secondItem="90D-eF-lQM" secondAttribute="leadingMargin" id="CA9-9u-B53"/>
-                                                <constraint firstItem="W7V-a3-CYT" firstAttribute="leading" secondItem="hfi-ZV-Ooe" secondAttribute="leading" id="EFc-6c-a2L"/>
-                                                <constraint firstItem="W7V-a3-CYT" firstAttribute="trailing" secondItem="90D-eF-lQM" secondAttribute="trailingMargin" id="Vpv-NY-qQk"/>
-                                                <constraint firstItem="hfi-ZV-Ooe" firstAttribute="top" secondItem="90D-eF-lQM" secondAttribute="topMargin" id="o3b-md-kaI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="tweetLabel" destination="W7V-a3-CYT" id="XeT-wF-guJ"/>
-                                            <outlet property="usernameLabel" destination="hfi-ZV-Ooe" id="4NE-HH-Joo"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="cB1-q5-hQO">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="156"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgU-tl-K3A">
+                                            <rect key="frame" x="279" y="67" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.122750947" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="FgU-tl-K3A" secondAttribute="centerY" id="Ot2-G6-UCI"/>
+                                        <constraint firstAttribute="centerX" secondItem="FgU-tl-K3A" secondAttribute="centerX" id="x4J-dy-x7Z"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uPX-74-Chy">
                                 <rect key="frame" x="281.5" y="281.5" width="37" height="37"/>
