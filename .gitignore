@@ -17,7 +17,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 .DS_Store
-
+Sample Code/Week2Filtering/ParseSwiftStarterProject/ParseStarterProject/Keys.swift
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

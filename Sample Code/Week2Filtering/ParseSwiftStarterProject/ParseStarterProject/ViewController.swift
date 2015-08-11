@@ -9,6 +9,11 @@ import Parse
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var topImageViewConstraint: NSLayoutConstraint!
+  @IBOutlet weak var bottomImageViewConstraint: NSLayoutConstraint!
+  @IBOutlet weak var bottomCollectionViewConstraint: NSLayoutConstraint!
+  @IBOutlet weak var leadingImageViewConstraint: NSLayoutConstraint!
+  @IBOutlet weak var trailingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var alertButton: UIButton!
   
   @IBOutlet weak var imageView: UIImageView!
@@ -19,6 +24,25 @@ class ViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      title = "Home"
+      
+//      if let constraints = view.constraints() as? [NSLayoutConstraint] {
+//        println(constraints.count)
+//        
+//        for constraint in constraints {
+//          if let imageView = constraint.firstItem as? UIImageView {
+//            println(constraint.constant)
+//          }
+//          
+//          if let imageView = constraint.secondItem as? UIImageView {
+//            println(constraint.constant)
+//            constraint.constant = 30
+//          }
+//        }
+//      }
+      
+     
         // Do any additional setup after loading the view, typically from a nib.
       
       if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
@@ -29,17 +53,19 @@ class ViewController: UIViewController {
         println("alert cancelled")
       }
       
-      let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (alert) -> Void in
-        println("alert destroyed")
+      if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+      let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        
+      }
+        alert.addAction(cameraAction)
       }
       
-      let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default) { (alert) -> Void in
+
+      
+      let confirmAction = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        self.picker.allowsEditing = true
         self.presentViewController(self.picker, animated: true, completion: nil)
         println("confirm")
-      }
-      
-      let otherAction = UIAlertAction(title: "other", style: .Default) { (alert) -> Void in
-        println("other")
       }
       
       let sepiaAction = UIAlertAction(title: "Sepia", style: UIAlertActionStyle.Default) { (alert) -> Void in
@@ -65,10 +91,35 @@ class ViewController: UIViewController {
         
       }
       
+      if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+      
+      let filterAction = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        self.enterFilterMode()
+      }
+        
+        alert.addAction(filterAction)
+      }
+      
+      let uploadAction = UIAlertAction(title: "Upload", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        
+        let post = PFObject(className: "Post")
+        post["text"] = "blah blah blah"
+        
+        if let image = self.imageView.image,
+        data = UIImageJPEGRepresentation(image, 1.0)
+        {
+          let file = PFFile(name: "post.jpeg", data: data)
+          post["image"] = file
+        }
+        
+        post.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
+          
+        })
+      }
+      
+      alert.addAction(uploadAction)
       alert.addAction(cancelAction)
       alert.addAction(confirmAction)
-      alert.addAction(otherAction)
-      alert.addAction(destroyAction)
       alert.addAction(sepiaAction)
       
       self.picker.delegate = self
@@ -90,12 +141,33 @@ class ViewController: UIViewController {
     self.presentViewController(alert, animated: true, completion: nil)
     
   }
+  
+  func enterFilterMode() {
+    leadingImageViewConstraint.constant = 40
+    trailingImageViewConstraint.constant = -40
+    topImageViewConstraint.constant = 40
+    bottomImageViewConstraint.constant = 70
+    bottomCollectionViewConstraint.constant = 8
+    
+    UIView.animateWithDuration(0.3, animations: { () -> Void in
+      self.view.layoutIfNeeded()
+    })
+    
+    let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "closeFilterMode")
+    navigationItem.rightBarButtonItem = doneButton
+  }
+  
+  func closeFilterMode() {
+    println("closing")
+  }
 }
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
+
+  
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-    let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
+    let image: UIImage = (info[UIImagePickerControllerEditedImage] as? UIImage)!
     self.imageView.image = image
     self.picker.dismissViewControllerAnimated(true, completion: nil)
   }
