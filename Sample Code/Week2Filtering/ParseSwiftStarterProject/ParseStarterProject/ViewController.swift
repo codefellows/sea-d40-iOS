@@ -8,24 +8,50 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController {
+  
+  //MARK: Constraint Buffer Constants
+  let kTrailingImageViewConstraintBuffer : CGFloat = -40
+  let kLeadingImageViewConstraintBuffer : CGFloat = 40
+  let kTopImageViewConstraintBuffer : CGFloat = 40
+  let kBottomImageViewConstraintBuffer : CGFloat = 90
+  let kThumbnailSize = CGSize(width: 100, height: 100)
+  
+  
+  let kStandardConstraintMargin : CGFloat = 8
 
+  //MARK: Outlets
   @IBOutlet weak var topImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var bottomImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var bottomCollectionViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var leadingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var trailingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var alertButton: UIButton!
-  
   @IBOutlet weak var imageView: UIImageView!
+  @IBOutlet weak var collectionView: UICollectionView!
   
   let picker: UIImagePickerController = UIImagePickerController()
   
+  var filters : [(UIImage, CIContext) -> (UIImage!)] = [FilterService.sepiaImageFromOriginalImage, FilterService.instantImageFromOriginalImage,FilterService.sepiaImageFromOriginalImage, FilterService.instantImageFromOriginalImage,FilterService.sepiaImageFromOriginalImage, FilterService.instantImageFromOriginalImage, ]
+  
+  let context = CIContext(options: nil)
+  var thumbnail : UIImage!
+  
   let alert = UIAlertController(title: "Button Clicked", message: "Yes the button was clicked", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  
+  var displayImage : UIImage! {
+    didSet {
+      imageView.image = displayImage
+      thumbnail = ImageResizer.resizeImage(displayImage, size:kThumbnailSize)
+      collectionView.reloadData()
+    }
+  }
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
       title = "Home"
+      collectionView.dataSource = self
+      imageView.image = UIImage(named: "placeholder.jpg")
       
 //      if let constraints = view.constraints() as? [NSLayoutConstraint] {
 //        println(constraints.count)
@@ -68,29 +94,6 @@ class ViewController: UIViewController {
         println("confirm")
       }
       
-      let sepiaAction = UIAlertAction(title: "Sepia", style: UIAlertActionStyle.Default) { (alert) -> Void in
-        
-        let image = CIImage(image: self.imageView.image!)
-        let sepiaFilter = CIFilter(name: "CIPhotoEffectInstant")
-        sepiaFilter.setValue(image, forKey: kCIInputImageKey)
-        
-        //cpu context, not as fast as GPU context
-        let context = CIContext(options: nil)
-        
-        //gpu context
-        let options = [kCIContextWorkingColorSpace : NSNull()]
-        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-        let gpuContext = CIContext(EAGLContext: eaglContext, options: options)
-        
-        
-        let outputImage = sepiaFilter.outputImage
-        let extent = outputImage.extent()
-        let cgImage = gpuContext.createCGImage(outputImage, fromRect: extent)
-        let finalImage = UIImage(CGImage: cgImage)
-        self.imageView.image = finalImage
-        
-      }
-      
       if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
       
       let filterAction = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (alert) -> Void in
@@ -120,10 +123,12 @@ class ViewController: UIViewController {
       alert.addAction(uploadAction)
       alert.addAction(cancelAction)
       alert.addAction(confirmAction)
-      alert.addAction(sepiaAction)
+    
       
       self.picker.delegate = self
       self.picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+      
+      displayImage = UIImage(named: "placeholder.jpg")
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,11 +148,11 @@ class ViewController: UIViewController {
   }
   
   func enterFilterMode() {
-    leadingImageViewConstraint.constant = 40
-    trailingImageViewConstraint.constant = -40
-    topImageViewConstraint.constant = 40
-    bottomImageViewConstraint.constant = 70
-    bottomCollectionViewConstraint.constant = 8
+    leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer
+    trailingImageViewConstraint.constant = kTrailingImageViewConstraintBuffer
+    topImageViewConstraint.constant = kTopImageViewConstraintBuffer
+    bottomImageViewConstraint.constant = kBottomImageViewConstraintBuffer
+    bottomCollectionViewConstraint.constant = kStandardConstraintMargin
     
     UIView.animateWithDuration(0.3, animations: { () -> Void in
       self.view.layoutIfNeeded()
@@ -162,13 +167,15 @@ class ViewController: UIViewController {
   }
 }
 
+
+//MARK: UIImagePickerControllerDelegate
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
 
   
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
     let image: UIImage = (info[UIImagePickerControllerEditedImage] as? UIImage)!
-    self.imageView.image = image
+    displayImage = image
     self.picker.dismissViewControllerAnimated(true, completion: nil)
   }
   
@@ -178,5 +185,22 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
   }
   
   
+}
+
+//MARK: UICollectionViewDataSource
+extension ViewController : UICollectionViewDataSource {
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return filters.count
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ThumbnailCell", forIndexPath: indexPath) as! ThumbnailCell
+    
+    let filter = filters[indexPath.row]
+    let filteredImage = filter(thumbnail,context)
+    cell.imageView.image = filteredImage
+    
+    return cell
+  }
 }
 
