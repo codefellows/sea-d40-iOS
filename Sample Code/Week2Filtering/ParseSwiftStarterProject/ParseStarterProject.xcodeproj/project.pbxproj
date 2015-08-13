@@ -20,6 +20,7 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		81BA81811A49E10C00E65899 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81801A49E10C00E65899 /* ParseUI.framework */; };
+		A2AABF921B7D3995003645C6 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AABF911B7D3995003645C6 /* GalleryViewController.swift */; };
 		A2C04E2F1B7AA84600F70AC6 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C04E2E1B7AA84600F70AC6 /* TimelineViewController.swift */; };
 		A2C04E311B7AB37600F70AC6 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C04E301B7AB37600F70AC6 /* Keys.swift */; };
 		A2F635F91B7BEF320076789F /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F635F81B7BEF320076789F /* FilterService.swift */; };
@@ -44,6 +45,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		81BA81821A49E27F00E65899 /* ParseStarterProject-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseStarterProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		A2AABF911B7D3995003645C6 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		A2C04E2E1B7AA84600F70AC6 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		A2C04E301B7AB37600F70AC6 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		A2F635F81B7BEF320076789F /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				A2AABF911B7D3995003645C6 /* GalleryViewController.swift */,
 				A2F635FC1B7BF9140076789F /* ThumbnailCell.swift */,
 				A2F635FA1B7BF84E0076789F /* ImageResizer.swift */,
 				A2F635F81B7BEF320076789F /* FilterService.swift */,
@@ -230,6 +233,7 @@
 				A2F635FD1B7BF9140076789F /* ThumbnailCell.swift in Sources */,
 				A2C04E311B7AB37600F70AC6 /* Keys.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				A2AABF921B7D3995003645C6 /* GalleryViewController.swift in Sources */,
 				A2F635FB1B7BF84E0076789F /* ImageResizer.swift in Sources */,
 				A2C04E2F1B7AA84600F70AC6 /* TimelineViewController.swift in Sources */,
 			);

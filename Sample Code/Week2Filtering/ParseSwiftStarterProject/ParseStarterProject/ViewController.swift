@@ -120,9 +120,14 @@ class ViewController: UIViewController {
         })
       }
       
+      let galleryAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        self.performSegueWithIdentifier("ShowGallery", sender: self)
+      }
+      
       alert.addAction(uploadAction)
       alert.addAction(cancelAction)
       alert.addAction(confirmAction)
+      alert.addAction(galleryAction)
     
       
       self.picker.delegate = self
@@ -146,6 +151,17 @@ class ViewController: UIViewController {
     self.presentViewController(alert, animated: true, completion: nil)
     
   }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowGallery" {
+      if let galleryViewController = segue.destinationViewController as? GalleryViewController {
+        galleryViewController.delegate = self
+        galleryViewController.desiredFinalImageSize = imageView.frame.size
+      }
+    }
+  }
+  
+  //MARK: Helper Methods
   
   func enterFilterMode() {
     leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer
@@ -201,6 +217,12 @@ extension ViewController : UICollectionViewDataSource {
     cell.imageView.image = filteredImage
     
     return cell
+  }
+}
+
+extension ViewController : ImageSelectedDelegate {
+  func controllerDidSelectImage(newImage: UIImage) {
+    displayImage = newImage
   }
 }
 
