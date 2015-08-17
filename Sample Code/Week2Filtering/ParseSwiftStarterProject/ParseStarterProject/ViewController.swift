@@ -48,7 +48,7 @@ class ViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      doSomething()
       title = "Home"
       collectionView.dataSource = self
       imageView.image = UIImage(named: "placeholder.jpg")
@@ -135,6 +135,10 @@ class ViewController: UIViewController {
       
       displayImage = UIImage(named: "placeholder.jpg")
     }
+  
+  func doSomething() {
+    println("hi")
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
