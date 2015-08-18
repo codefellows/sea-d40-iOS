@@ -15,7 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    if let token = KeychainService.loadToken() {
+      
+    } else {
+      let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+      if let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController {
+       window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = loginVC
+      }
+      
+    }
+    return true
+  }
+  
+  func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+    println(url)
+    AuthService.exchangeCodeInURL(url)
     return true
   }
 
