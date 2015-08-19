@@ -16,6 +16,7 @@ class AuthService {
   
   class func exchangeCodeInURL(codeURL : NSURL) {
     if let code = codeURL.query {
+      
     let request = NSMutableURLRequest(URL: NSURL(string: "https://github.com/login/oauth/access_token?\(code)&client_id=\(kClientID)&client_secret=\(kClientSecret)")!)
       println(request.URL)
       request.HTTPMethod = "POST"
@@ -29,6 +30,12 @@ class AuthService {
           if let rootObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError) as? [String : AnyObject],
             token = rootObject["access_token"] as? String {
            KeychainService.saveToken(token)
+              
+          
+              NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                              NSNotificationCenter.defaultCenter().postNotificationName(kTokenNotification, object: nil)
+              })
+              
           }
         }
       }).resume()

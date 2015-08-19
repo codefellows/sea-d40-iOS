@@ -11,6 +11,10 @@
 		A27BCACD1B83D3FF00CD8AB9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCACC1B83D3FF00CD8AB9 /* Keys.swift */; };
 		A27BCACF1B83DE4200CD8AB9 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCACE1B83DE4200CD8AB9 /* KeyChainService.swift */; };
 		A27BCAD11B83EC9700CD8AB9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCAD01B83EC9700CD8AB9 /* LoginViewController.swift */; };
+		A27BCAD31B851F1000CD8AB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCAD21B851F1000CD8AB9 /* Constants.swift */; };
+		A27BCAD51B852AE800CD8AB9 /* TestAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCAD41B852AE800CD8AB9 /* TestAnimationsViewController.swift */; };
+		A27BCADF1B853E9C00CD8AB9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCADE1B853E9C00CD8AB9 /* User.swift */; };
+		A27BCAE11B853F1E00CD8AB9 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCAE01B853F1E00CD8AB9 /* UserSearchViewController.swift */; };
 		A2BBE5AD1B8277A100A61387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BBE5AC1B8277A100A61387 /* AppDelegate.swift */; };
 		A2BBE5AF1B8277A100A61387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BBE5AE1B8277A100A61387 /* ViewController.swift */; };
 		A2BBE5B21B8277A100A61387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BBE5B01B8277A100A61387 /* Main.storyboard */; };
@@ -37,6 +41,10 @@
 		A27BCACC1B83D3FF00CD8AB9 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = ../Keys.swift; sourceTree = "<group>"; };
 		A27BCACE1B83DE4200CD8AB9 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		A27BCAD01B83EC9700CD8AB9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A27BCAD21B851F1000CD8AB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A27BCAD41B852AE800CD8AB9 /* TestAnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAnimationsViewController.swift; sourceTree = "<group>"; };
+		A27BCADE1B853E9C00CD8AB9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A27BCAE01B853F1E00CD8AB9 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		A2BBE5A71B8277A100A61387 /* GithubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2BBE5AB1B8277A100A61387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2BBE5AC1B8277A100A61387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,12 +102,16 @@
 				A2BBE5AC1B8277A100A61387 /* AppDelegate.swift */,
 				A2BBE5AE1B8277A100A61387 /* ViewController.swift */,
 				A2BBE5B01B8277A100A61387 /* Main.storyboard */,
+				A27BCAE01B853F1E00CD8AB9 /* UserSearchViewController.swift */,
+				A27BCAD41B852AE800CD8AB9 /* TestAnimationsViewController.swift */,
 				A27BCAD01B83EC9700CD8AB9 /* LoginViewController.swift */,
 				A2BBE5CC1B82793E00A61387 /* MenuTableViewController.swift */,
 				A27BCACC1B83D3FF00CD8AB9 /* Keys.swift */,
 				A27BCACE1B83DE4200CD8AB9 /* KeyChainService.swift */,
 				A2BBE5CE1B82883F00A61387 /* GithubService.swift */,
+				A27BCADE1B853E9C00CD8AB9 /* User.swift */,
 				A27BCACA1B83D2BC00CD8AB9 /* AuthService.swift */,
+				A27BCAD21B851F1000CD8AB9 /* Constants.swift */,
 				A2BBE5D01B828B6B00A61387 /* RepoSearchViewController.swift */,
 				A2BBE5B31B8277A100A61387 /* Images.xcassets */,
 				A2BBE5B51B8277A100A61387 /* LaunchScreen.xib */,
@@ -238,8 +250,12 @@
 				A2BBE5AF1B8277A100A61387 /* ViewController.swift in Sources */,
 				A2BBE5AD1B8277A100A61387 /* AppDelegate.swift in Sources */,
 				A27BCACB1B83D2BC00CD8AB9 /* AuthService.swift in Sources */,
+				A27BCAD31B851F1000CD8AB9 /* Constants.swift in Sources */,
 				A27BCACD1B83D3FF00CD8AB9 /* Keys.swift in Sources */,
 				A27BCACF1B83DE4200CD8AB9 /* KeyChainService.swift in Sources */,
+				A27BCADF1B853E9C00CD8AB9 /* User.swift in Sources */,
+				A27BCAE11B853F1E00CD8AB9 /* UserSearchViewController.swift in Sources */,
+				A27BCAD51B852AE800CD8AB9 /* TestAnimationsViewController.swift in Sources */,
 				A2BBE5CF1B82883F00A61387 /* GithubService.swift in Sources */,
 				A2BBE5CD1B82793E00A61387 /* MenuTableViewController.swift in Sources */,
 			);
