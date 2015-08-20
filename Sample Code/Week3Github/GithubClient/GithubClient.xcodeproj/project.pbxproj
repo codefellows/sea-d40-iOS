@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2713CE21B863044002697E2 /* UserJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE11B863044002697E2 /* UserJSONParser.swift */; };
+		A2713CE41B863498002697E2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE31B863498002697E2 /* UserCell.swift */; };
+		A2713CE71B8634D0002697E2 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE51B8634D0002697E2 /* ImageResizer.swift */; };
+		A2713CE81B8634D0002697E2 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE61B8634D0002697E2 /* ImageService.swift */; };
+		A2713CEA1B863A7C002697E2 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE91B863A7C002697E2 /* UserDetailViewController.swift */; };
+		A2713CEE1B866E91002697E2 /* ToUserDetailAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CED1B866E91002697E2 /* ToUserDetailAnimationController.swift */; };
+		A2713CF01B867F16002697E2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CEF1B867F16002697E2 /* WebViewController.swift */; };
+		A2713CF21B86888A002697E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CF11B86888A002697E2 /* Extensions.swift */; };
 		A27BCACB1B83D2BC00CD8AB9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCACA1B83D2BC00CD8AB9 /* AuthService.swift */; };
 		A27BCACD1B83D3FF00CD8AB9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCACC1B83D3FF00CD8AB9 /* Keys.swift */; };
 		A27BCACF1B83DE4200CD8AB9 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27BCACE1B83DE4200CD8AB9 /* KeyChainService.swift */; };
@@ -37,6 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2713CE11B863044002697E2 /* UserJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJSONParser.swift; sourceTree = "<group>"; };
+		A2713CE31B863498002697E2 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		A2713CE51B8634D0002697E2 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
+		A2713CE61B8634D0002697E2 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		A2713CE91B863A7C002697E2 /* UserDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		A2713CED1B866E91002697E2 /* ToUserDetailAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToUserDetailAnimationController.swift; sourceTree = "<group>"; };
+		A2713CEF1B867F16002697E2 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A2713CF11B86888A002697E2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A27BCACA1B83D2BC00CD8AB9 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = ../AuthService.swift; sourceTree = "<group>"; };
 		A27BCACC1B83D3FF00CD8AB9 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keys.swift; path = ../Keys.swift; sourceTree = "<group>"; };
 		A27BCACE1B83DE4200CD8AB9 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
@@ -102,13 +118,21 @@
 				A2BBE5AC1B8277A100A61387 /* AppDelegate.swift */,
 				A2BBE5AE1B8277A100A61387 /* ViewController.swift */,
 				A2BBE5B01B8277A100A61387 /* Main.storyboard */,
+				A2713CEF1B867F16002697E2 /* WebViewController.swift */,
+				A2713CE31B863498002697E2 /* UserCell.swift */,
+				A2713CE51B8634D0002697E2 /* ImageResizer.swift */,
+				A2713CE61B8634D0002697E2 /* ImageService.swift */,
 				A27BCAE01B853F1E00CD8AB9 /* UserSearchViewController.swift */,
+				A2713CF11B86888A002697E2 /* Extensions.swift */,
+				A2713CED1B866E91002697E2 /* ToUserDetailAnimationController.swift */,
 				A27BCAD41B852AE800CD8AB9 /* TestAnimationsViewController.swift */,
 				A27BCAD01B83EC9700CD8AB9 /* LoginViewController.swift */,
 				A2BBE5CC1B82793E00A61387 /* MenuTableViewController.swift */,
+				A2713CE91B863A7C002697E2 /* UserDetailViewController.swift */,
 				A27BCACC1B83D3FF00CD8AB9 /* Keys.swift */,
 				A27BCACE1B83DE4200CD8AB9 /* KeyChainService.swift */,
 				A2BBE5CE1B82883F00A61387 /* GithubService.swift */,
+				A2713CE11B863044002697E2 /* UserJSONParser.swift */,
 				A27BCADE1B853E9C00CD8AB9 /* User.swift */,
 				A27BCACA1B83D2BC00CD8AB9 /* AuthService.swift */,
 				A27BCAD21B851F1000CD8AB9 /* Constants.swift */,
@@ -247,17 +271,25 @@
 			files = (
 				A27BCAD11B83EC9700CD8AB9 /* LoginViewController.swift in Sources */,
 				A2BBE5D11B828B6B00A61387 /* RepoSearchViewController.swift in Sources */,
+				A2713CEA1B863A7C002697E2 /* UserDetailViewController.swift in Sources */,
+				A2713CF01B867F16002697E2 /* WebViewController.swift in Sources */,
 				A2BBE5AF1B8277A100A61387 /* ViewController.swift in Sources */,
 				A2BBE5AD1B8277A100A61387 /* AppDelegate.swift in Sources */,
+				A2713CE71B8634D0002697E2 /* ImageResizer.swift in Sources */,
 				A27BCACB1B83D2BC00CD8AB9 /* AuthService.swift in Sources */,
 				A27BCAD31B851F1000CD8AB9 /* Constants.swift in Sources */,
 				A27BCACD1B83D3FF00CD8AB9 /* Keys.swift in Sources */,
+				A2713CE21B863044002697E2 /* UserJSONParser.swift in Sources */,
+				A2713CE41B863498002697E2 /* UserCell.swift in Sources */,
 				A27BCACF1B83DE4200CD8AB9 /* KeyChainService.swift in Sources */,
+				A2713CF21B86888A002697E2 /* Extensions.swift in Sources */,
 				A27BCADF1B853E9C00CD8AB9 /* User.swift in Sources */,
 				A27BCAE11B853F1E00CD8AB9 /* UserSearchViewController.swift in Sources */,
+				A2713CE81B8634D0002697E2 /* ImageService.swift in Sources */,
 				A27BCAD51B852AE800CD8AB9 /* TestAnimationsViewController.swift in Sources */,
 				A2BBE5CF1B82883F00A61387 /* GithubService.swift in Sources */,
 				A2BBE5CD1B82793E00A61387 /* MenuTableViewController.swift in Sources */,
+				A2713CEE1B866E91002697E2 /* ToUserDetailAnimationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -100,6 +100,24 @@
             </objects>
             <point key="canvasLocation" x="-237" y="483"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="W2H-r8-TQc">
+            <objects>
+                <viewController id="Fry-RX-IDl" customClass="WebViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l5d-lf-rts"/>
+                        <viewControllerLayoutGuide type="bottom" id="MGk-SD-Suf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GEf-UT-XOW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XzL-xK-97Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="1183"/>
+        </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="09O-86-bsy">
             <objects>
@@ -208,14 +226,29 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rUe-hp-UoV">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserCell" id="rUe-hp-UoV" customClass="UserCell" customModule="GithubClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-vK-Rll">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="eMb-vK-Rll" secondAttribute="bottom" constant="-8" id="7dH-aY-rVk"/>
+                                            <constraint firstItem="eMb-vK-Rll" firstAttribute="top" secondItem="rUe-hp-UoV" secondAttribute="topMargin" constant="-8" id="Xn8-Rk-smH"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="eMb-vK-Rll" secondAttribute="trailing" constant="-8" id="Zmi-Tj-Umh"/>
+                                            <constraint firstItem="eMb-vK-Rll" firstAttribute="leading" secondItem="rUe-hp-UoV" secondAttribute="leadingMargin" constant="-8" id="coE-XH-9ls"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="eMb-vK-Rll" id="E3t-zd-Kjq"/>
+                                            <segue destination="qJS-NZ-2DQ" kind="show" identifier="ShowUserDetail" id="ECR-9d-R2N"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -242,7 +275,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kab-yW-ggN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="778"/>
+            <point key="canvasLocation" x="2077" y="778"/>
+        </scene>
+        <!--User Detail View Controller-->
+        <scene sceneID="JLy-Wb-dcX">
+            <objects>
+                <viewController id="qJS-NZ-2DQ" customClass="UserDetailViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kN-tr-Zad"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rc2-Eg-WiE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="62E-QZ-HvD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KKs-h1-HxW">
+                                <rect key="frame" x="250.5" y="72" width="100" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="JWs-I3-fWq"/>
+                                    <constraint firstAttribute="height" constant="100" id="X5R-gC-MxX"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="KKs-h1-HxW" secondAttribute="centerX" id="gEg-Lf-dLl"/>
+                            <constraint firstItem="KKs-h1-HxW" firstAttribute="top" secondItem="5kN-tr-Zad" secondAttribute="bottom" constant="8" id="nZR-zF-HSX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="KKs-h1-HxW" id="A4M-Bc-rno"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9WA-mI-7Au" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2729" y="778"/>
         </scene>
         <!--Repo Search View Controller-->
         <scene sceneID="JsD-Kd-BV4">
