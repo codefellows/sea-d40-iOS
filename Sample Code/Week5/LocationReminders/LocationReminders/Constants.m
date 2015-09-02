@@ -11,4 +11,5 @@
 
 NSString *const kMyCity = @"Seattle";
 #define kMyAge = 1231243;
+NSString *const kReminderNotification = @"ReminderNotification";
 

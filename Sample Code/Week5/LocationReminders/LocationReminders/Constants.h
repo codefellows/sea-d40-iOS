@@ -10,3 +10,4 @@
 
 
 extern NSString *const kMyCity;
+extern NSString *const kReminderNotification;

@@ -33,6 +33,8 @@
 		A2B5F1961B965DF6003D9D97 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B5F1951B965DF6003D9D97 /* SystemConfiguration.framework */; };
 		A2B5F1981B965DFD003D9D97 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B5F1971B965DFD003D9D97 /* libz.dylib */; };
 		A2B5F19A1B965E06003D9D97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B5F1991B965E06003D9D97 /* libsqlite3.dylib */; };
+		A2B5F1D21B979AEB003D9D97 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B5F1D11B979AEB003D9D97 /* Reminder.m */; };
+		A2B5F1D51B97AC62003D9D97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B5F1D41B97AC62003D9D97 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,10 @@
 		A2B5F1951B965DF6003D9D97 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A2B5F1971B965DFD003D9D97 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		A2B5F1991B965E06003D9D97 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		A2B5F1D01B979AEB003D9D97 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		A2B5F1D11B979AEB003D9D97 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		A2B5F1D31B97AC62003D9D97 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		A2B5F1D41B97AC62003D9D97 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,10 @@
 				A2B5F11B1B950CE9003D9D97 /* AppDelegate.m */,
 				A2B5F11D1B950CE9003D9D97 /* ViewController.h */,
 				A2B5F11E1B950CE9003D9D97 /* ViewController.m */,
+				A2B5F1D31B97AC62003D9D97 /* DetailViewController.h */,
+				A2B5F1D41B97AC62003D9D97 /* DetailViewController.m */,
+				A2B5F1D01B979AEB003D9D97 /* Reminder.h */,
+				A2B5F1D11B979AEB003D9D97 /* Reminder.m */,
 				A2B5F1751B964B48003D9D97 /* Constants.h */,
 				A2B5F1761B964B48003D9D97 /* Constants.m */,
 				A2B5F1201B950CE9003D9D97 /* Main.storyboard */,
@@ -254,6 +264,9 @@
 					A2B5F1121B950CE8003D9D97 = {
 						CreatedOnToolsVersion = 6.4;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -312,7 +325,9 @@
 				A2B5F11F1B950CE9003D9D97 /* ViewController.m in Sources */,
 				A2B5F11C1B950CE9003D9D97 /* AppDelegate.m in Sources */,
 				A2B5F1191B950CE9003D9D97 /* main.m in Sources */,
+				A2B5F1D21B979AEB003D9D97 /* Reminder.m in Sources */,
 				A2B5F1771B964B48003D9D97 /* Constants.m in Sources */,
+				A2B5F1D51B97AC62003D9D97 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

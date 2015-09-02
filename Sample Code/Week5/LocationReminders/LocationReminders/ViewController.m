@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
+#import "Reminder.h"
 
 NSString *const kMyCountry = @"USA";
 
@@ -24,6 +25,10 @@ NSString *const kMyCountry = @"USA";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reminderNotification:) name:kReminderNotification object:nil];
+  
+  
   self.mapView.delegate = self;
   self.mapView.showsUserLocation = true;
   
@@ -31,7 +36,7 @@ NSString *const kMyCountry = @"USA";
   
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
-  [self.locationManager requestWhenInUseAuthorization];
+  [self.locationManager requestAlwaysAuthorization];
   
   [self.locationManager startUpdatingLocation];
   
@@ -50,6 +55,8 @@ NSString *const kMyCountry = @"USA";
     }
   }];
   
+  
+  
   PFQuery *query = [PFQuery queryWithClassName:@"Place"];
   
   [query whereKey:@"location" nearGeoPoint:geoPoint];
@@ -59,9 +66,43 @@ NSString *const kMyCountry = @"USA";
   }];
   
   
-                                                                             
   
+  Reminder *reminder = [Reminder object];
+  reminder.name = @"Pizza";
+  
+  [reminder saveInBackground];
+  
+  PFQuery *pizzaQuery = [Reminder query];
+  [pizzaQuery findObjectsInBackgroundWithBlock:^(NSArray *reminders, NSError *error) {
+    
+    Reminder *firstReminder = [reminders firstObject];
+    NSLog(@"%@",firstReminder.name);
+  }];
+  
+  
+  if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+    
+    CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(47.6235, -122.3363) radius:200 identifier:@"Code Fellows"];
+    
+    [self.locationManager startMonitoringForRegion:region];
+    
+    NSArray *regions = [[self.locationManager monitoredRegions] allObjects];
+    
+    
+  }
+
   // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void)reminderNotification:(NSNotification *)notification {
+  NSLog(@"notification fired!");
+  NSDictionary *userInfo = notification.userInfo;
+  if (userInfo) {
+    
+    NSString *value = userInfo[@"Hello"];
+    
+  }
+  
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -73,6 +114,10 @@ NSString *const kMyCountry = @"USA";
   annotation.title = @"Code Fellows";
   [self.mapView addAnnotation:annotation];
 
+}
+
+-(void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -91,12 +136,14 @@ NSString *const kMyCountry = @"USA";
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
   
   CLLocation *location = locations.lastObject;
-  NSLog(@"lat: %f, long: %f, speed: %f",location.coordinate.latitude, location.coordinate.longitude, location.speed);
- 
-  
+//  NSLog(@"lat: %f, long: %f, speed: %f",location.coordinate.latitude, location.coordinate.longitude, location.speed);
 }
 
-#pragma mark - CLLocationManagerDelegate
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+  NSLog(@"entered region!");
+}
+
+#pragma mark - MKMapKitDelegate
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
   
