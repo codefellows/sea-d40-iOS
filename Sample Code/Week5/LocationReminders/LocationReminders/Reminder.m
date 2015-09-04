@@ -15,6 +15,7 @@
 @implementation Reminder
 
 @dynamic name;
+@dynamic user;
 
 + (NSString * __nonnull)parseClassName {
   return @"Reminder";

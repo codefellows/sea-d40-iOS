@@ -35,6 +35,8 @@
 		A2B5F19A1B965E06003D9D97 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B5F1991B965E06003D9D97 /* libsqlite3.dylib */; };
 		A2B5F1D21B979AEB003D9D97 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B5F1D11B979AEB003D9D97 /* Reminder.m */; };
 		A2B5F1D51B97AC62003D9D97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B5F1D41B97AC62003D9D97 /* DetailViewController.m */; };
+		A2DF306B1B9901F60037A872 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF306A1B9901F60037A872 /* Node.m */; };
+		A2DF306E1B99023B0037A872 /* LinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF306D1B99023B0037A872 /* LinkedList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		A2B5F1D11B979AEB003D9D97 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 		A2B5F1D31B97AC62003D9D97 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		A2B5F1D41B97AC62003D9D97 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A2DF30691B9901F60037A872 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		A2DF306A1B9901F60037A872 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		A2DF306C1B99023B0037A872 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		A2DF306D1B99023B0037A872 /* LinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,10 @@
 				A2B5F1D41B97AC62003D9D97 /* DetailViewController.m */,
 				A2B5F1D01B979AEB003D9D97 /* Reminder.h */,
 				A2B5F1D11B979AEB003D9D97 /* Reminder.m */,
+				A2DF306C1B99023B0037A872 /* LinkedList.h */,
+				A2DF306D1B99023B0037A872 /* LinkedList.m */,
+				A2DF30691B9901F60037A872 /* Node.h */,
+				A2DF306A1B9901F60037A872 /* Node.m */,
 				A2B5F1751B964B48003D9D97 /* Constants.h */,
 				A2B5F1761B964B48003D9D97 /* Constants.m */,
 				A2B5F1201B950CE9003D9D97 /* Main.storyboard */,
@@ -324,6 +334,8 @@
 			files = (
 				A2B5F11F1B950CE9003D9D97 /* ViewController.m in Sources */,
 				A2B5F11C1B950CE9003D9D97 /* AppDelegate.m in Sources */,
+				A2DF306E1B99023B0037A872 /* LinkedList.m in Sources */,
+				A2DF306B1B9901F60037A872 /* Node.m in Sources */,
 				A2B5F1191B950CE9003D9D97 /* main.m in Sources */,
 				A2B5F1D21B979AEB003D9D97 /* Reminder.m in Sources */,
 				A2B5F1771B964B48003D9D97 /* Constants.m in Sources */,

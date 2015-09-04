@@ -18,6 +18,19 @@
   
 //  [[NSNotificationCenter defaultCenter] postNotificationName:kReminderNotification object:self];
   
+  UILocalNotification *notification = [[UILocalNotification alloc] init];
+  
+  notification.alertTitle = @"Hello";
+  notification.alertBody = @"Blah blah blah";
+  
+  NSDate *now = [NSDate date];
+  NSDate *fireDate = [NSDate dateWithTimeInterval:15.0 sinceDate:now];
+  notification.fireDate = fireDate;
+  
+  [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+  
+  
+  
   NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Data" forKey:@"Hello"];
   
   [[NSNotificationCenter defaultCenter] postNotificationName:kReminderNotification object:self userInfo:userInfo];

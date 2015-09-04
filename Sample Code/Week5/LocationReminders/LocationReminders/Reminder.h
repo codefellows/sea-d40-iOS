@@ -11,5 +11,6 @@
 @interface Reminder : PFObject <PFSubclassing>
 
 @property (strong,nonatomic) NSString *name;
+@property (strong,nonatomic) PFUser *user;
 
 @end

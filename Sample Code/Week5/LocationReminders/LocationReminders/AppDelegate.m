@@ -20,6 +20,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
   
+  if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound) categories:nil];
+    [application registerUserNotificationSettings:settings];
+  }
+  
+  
   [Reminder registerSubclass];
   
   [Parse setApplicationId:@"lu3PXQ1vdExdyZCtsxkTJUDMP1M8zE4JyXPUA2pH" clientKey:@"jBdsobzNREaqo4ptNZ3WxxOXnHwXmZnApvpV1IaO"];
@@ -27,6 +33,10 @@
   
   
   return YES;
+}
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+  NSLog(@"local");
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -27,7 +27,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2ld-1J-mou" kind="show" id="3Bn-FJ-GJv"/>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eFZ-ee-tRu"/>
                                 </connections>
                             </button>
                         </subviews>

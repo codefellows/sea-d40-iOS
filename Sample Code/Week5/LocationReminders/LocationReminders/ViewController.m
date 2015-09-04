@@ -12,10 +12,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 #import "Reminder.h"
+#import <ParseUI/ParseUI.h>
+
 
 NSString *const kMyCountry = @"USA";
 
-@interface ViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface ViewController () <CLLocationManagerDelegate, MKMapViewDelegate, PFSignUpViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong,nonatomic) CLLocationManager *locationManager;
 
@@ -69,6 +71,7 @@ NSString *const kMyCountry = @"USA";
   
   Reminder *reminder = [Reminder object];
   reminder.name = @"Pizza";
+  reminder.user = [PFUser currentUser];
   
   [reminder saveInBackground];
   
@@ -86,7 +89,14 @@ NSString *const kMyCountry = @"USA";
     
     [self.locationManager startMonitoringForRegion:region];
     
-    NSArray *regions = [[self.locationManager monitoredRegions] allObjects];
+   
+    
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:CLLocationCoordinate2DMake(47.6235, -122.3363) radius:200];
+    
+    [self.mapView addOverlay:circle];
+    
+    
+//    NSArray *regions = [[self.locationManager monitoredRegions] allObjects];
     
     
   }
@@ -115,6 +125,17 @@ NSString *const kMyCountry = @"USA";
   [self.mapView addAnnotation:annotation];
 
 }
+- (IBAction)buttonPressed:(id)sender {
+  
+  //MKAnnotationView *view = (MKAnnotationView *)sender;
+  
+  //[PFUser currentUser]
+  
+  PFSignUpViewController *signUpVC = [[PFSignUpViewController alloc] init];
+  signUpVC.delegate = self;
+  [self presentViewController:signUpVC animated:true completion:nil];
+
+}
 
 -(void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -141,9 +162,16 @@ NSString *const kMyCountry = @"USA";
 
 -(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
   NSLog(@"entered region!");
+  
+  UILocalNotification *notification = [[UILocalNotification alloc] init];
+  
+  notification.alertTitle = @"Hello";
+  notification.alertBody = @"Blah blah blah";
+  
+  [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 
-#pragma mark - MKMapKitDelegate
+#pragma mark - MKMapViewDelegate
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
   
@@ -164,6 +192,27 @@ NSString *const kMyCountry = @"USA";
   return pinView;
   
 }
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+}
+
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+  MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+  
+  circleRenderer.strokeColor = [UIColor blueColor];
+  circleRenderer.fillColor = [UIColor redColor];
+  circleRenderer.alpha = 0.5;
+  
+  return circleRenderer;
+}
+
+#pragma mark - PFSignUpViewController
+
+-(void)signUpViewController:(PFSignUpViewController * __nonnull)signUpController didSignUpUser:(PFUser * __nonnull)user {
+  [signUpController dismissViewControllerAnimated:true completion:nil];
+}
+
+
 
 
 @end
