@@ -10,6 +10,9 @@
 #import "ViewController.h"
 #import "Hotel.h"
 #import "Room.h"
+#import "HotelListViewController.h"
+#import "DatePickerViewController.h"
+#import "BookReservationViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,47 +23,95 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  
+  NSDate *now = [NSDate date];
+  NSLog(@"%@",now);
+  
+  NSDate *later = [NSDate dateWithTimeIntervalSinceNow:30];
+  NSLog(@"later: %@",later);
+  
+  NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
+  
+  NSLog(@"year is: %ld",(long)components.year);
+  
+  NSDateComponents *newComponents = [[NSDateComponents alloc] init];
+  newComponents.year = 1990;
+  newComponents.day = 25;
+  newComponents.month = 12;
+  
+  NSDate *xmasIn1990 = [calendar dateFromComponents:newComponents];
+  
+  NSLog(@"%@",xmasIn1990);
+  
+//  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+//  
+//  
+//  NSError *fetchError;
+//  NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+//  
+//  NSLog(@"%lu",(unsigned long)results.count);
+  
+  [self seedCoreDataIfNeeded];
+  
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   [self.window makeKeyAndVisible];
   
-  ViewController *dummyRoot = [[ViewController alloc] init];
-  //dummyRoot.view.backgroundColor = [UIColor blueColor];
+  HotelListViewController *hotelListViewController = [[HotelListViewController alloc] init];
+  DatePickerViewController *datePickerController = [[DatePickerViewController alloc] init];
+  BookReservationViewController *bookReservationController = [[BookReservationViewController alloc] init];
   
-  self.window.rootViewController = dummyRoot;
+
+  self.window.rootViewController = bookReservationController;
   
-  
-  Hotel *hotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
-  hotel.name = @"Four Seasons";
-  hotel.stars = @5;
-  
-  Room *room1 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
-  room1.number = @1;
-  room1.hotel = hotel;
-  
-  //[self.managedObjectContext deletedObjects];
-  
-  //hotel.managedObjectContext
-//
-//  
-//  NSError *saveError;
-//  BOOL result = [self.managedObjectContext save:&saveError];
-//  if (!result) {
-//    NSLog(@" %@",saveError.localizedDescription);
-//  }
+  return YES;
+}
+
+-(void)seedCoreDataIfNeeded {
   
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-
-  
   NSError *fetchError;
- NSArray *results = [self.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
-  
-  NSLog(@"%lu",(unsigned long)results.count);
-  
-  
-  
-  
-  // Override point for customization after application launch.
-  return YES;
+  NSInteger count = [self.managedObjectContext countForFetchRequest:fetchRequest error:&fetchError];
+  if (count == 0) {
+    //we need to seed our database
+    
+//    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"hotels" ofType:@"json"];
+//    NSData *jsonData = [NSData dataWithContentsOfFile:jsonPath];
+//    
+//    NSError *jsonError;
+//    NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&jsonError];
+//    if (jsonError) {
+//      return;
+//    }
+    
+      Hotel *hotel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
+      hotel.name = @"Four Seasons";
+      hotel.stars = @5;
+    
+      Hotel *motel = [NSEntityDescription insertNewObjectForEntityForName:@"Hotel" inManagedObjectContext:self.managedObjectContext];
+      motel.name = @"Sadness Motel";
+      motel.stars = @0;
+    
+      Room *room1 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+      room1.number = @1;
+      room1.hotel = hotel;
+    
+      Room *room2 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+      room2.number = @2;
+      room2.hotel = hotel;
+    
+      Room *room3 = [NSEntityDescription insertNewObjectForEntityForName:@"Room" inManagedObjectContext:self.managedObjectContext];
+      room3.number = @3;
+      room3.hotel = hotel;
+    
+      NSError *saveError;
+      BOOL result = [self.managedObjectContext save:&saveError];
+      if (!result) {
+        NSLog(@" %@",saveError.localizedDescription);
+      }
+    
+  }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

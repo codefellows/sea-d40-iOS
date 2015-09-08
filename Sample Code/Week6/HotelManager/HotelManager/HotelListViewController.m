@@ -7,22 +7,79 @@
 //
 
 #import "HotelListViewController.h"
+#import "AppDelegate.h"
+#import "Hotel.h"
 
-@interface HotelListViewController ()
+@interface HotelListViewController () <UITableViewDataSource>
+
+@property (strong,nonatomic) UITableView *tableView;
+
+@property (strong,nonatomic) NSArray *hotels;
 
 @end
 
 @implementation HotelListViewController
 
+
+-(void)loadView {
+  UIView *rootView = [[UIView alloc] init];
+  
+  UITableView *tableView = [[UITableView alloc] initWithFrame:rootView.frame style:UITableViewStylePlain];
+  self.tableView = tableView;
+  [tableView setTranslatesAutoresizingMaskIntoConstraints:false];
+  [rootView addSubview:tableView];
+  
+  NSDictionary *views = @{@"tableView" : tableView};
+  
+  NSArray *tableViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|" options:0 metrics:nil views:views];
+  [rootView addConstraints:tableViewVerticalConstraints];
+  NSArray *tableViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|" options:0 metrics:nil views:views];
+  [rootView addConstraints:tableViewHorizontalConstraints];
+  
+  self.view = rootView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+  self.tableView.dataSource = self;
+  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
+  
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+  
+//  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name MATCHES %@",@"Four Seasons"];
+  
+  fetchRequest.predicate  = [NSPredicate predicateWithFormat:@"stars < 3"];
+  
+  NSError *fetchError;
+  self.hotels = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+  
+  if (fetchError) {
+    NSLog(@"%@",fetchError.localizedDescription);
+  }
+  
+  [self.tableView reloadData];
+  
+  
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableViewDataSource
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return self.hotels.count;
 }
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotelCell" forIndexPath:indexPath];
+  
+  Hotel *hotel = self.hotels[indexPath.row];
+  cell.textLabel.text = hotel.name;
+
+  
+  return cell;
+}
+
 
 /*
 #pragma mark - Navigation
