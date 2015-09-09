@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "AppDelegate.h"
+#import "CoreDataStack.h"
 
 @interface HotelManagerTests : XCTestCase
 
@@ -17,12 +19,19 @@
 
 - (void)setUp {
     [super setUp];
+  AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  appDelegate.coreDataStack = [[CoreDataStack alloc] initForTesting];
+  
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testNil {
+  XCTAssertNil(nil);
 }
 
 - (void)testExample {

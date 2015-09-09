@@ -9,6 +9,7 @@
 #import "HotelListViewController.h"
 #import "AppDelegate.h"
 #import "Hotel.h"
+#import "CoreDataStack.h"
 
 @interface HotelListViewController () <UITableViewDataSource>
 
@@ -45,14 +46,15 @@
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HotelCell"];
   
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+  
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
   
 //  fetchRequest.predicate = [NSPredicate predicateWithFormat:@"name MATCHES %@",@"Four Seasons"];
   
   fetchRequest.predicate  = [NSPredicate predicateWithFormat:@"stars < 3"];
-  
+
   NSError *fetchError;
-  self.hotels = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+  self.hotels = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
   
   if (fetchError) {
     NSLog(@"%@",fetchError.localizedDescription);

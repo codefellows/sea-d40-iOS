@@ -10,6 +10,7 @@
 #import "Reservation.h"
 #import "AppDelegate.h"
 #import "Room.h"
+#import "CoreDataStack.h"
 
 @interface BookReservationViewController ()
 
@@ -39,7 +40,7 @@
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"startDate <= %@ AND endDate >= %@",toDate,fromDate];
   request.predicate = predicate;
   NSError *fetchError;
-  NSArray *results = [appDelegate.managedObjectContext executeFetchRequest:request error:&fetchError];
+  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:request error:&fetchError];
   
   NSMutableArray *badRooms = [[NSMutableArray alloc] init];
   for (Reservation *reservation in results) {
@@ -52,7 +53,7 @@
   
   NSError *finalError;
   
-  NSArray *finalResults = [appDelegate.managedObjectContext executeFetchRequest:finalRequest error:&finalError];
+  NSArray *finalResults = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:finalRequest error:&finalError];
   
   if (finalError) {
     return nil;
@@ -65,7 +66,7 @@
   
   AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
 
-  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.managedObjectContext];
+  Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:appDelegate.coreDataStack.managedObjectContext];
   
   reservation.startDate = [NSDate date];
   reservation.endDate = [NSDate dateWithTimeInterval:86400 * 2 sinceDate:[NSDate date]];
@@ -73,12 +74,12 @@
   NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
   fetchRequest.predicate = [NSPredicate predicateWithFormat:@"number == 2"];
   NSError *fetchError;
-  NSArray *results = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
+  NSArray *results = [appDelegate.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:&fetchError];
   if (results.count > 0) {
     Room *room = results.firstObject;
     reservation.room = room;
     NSError *saveError;
-    if (![appDelegate.managedObjectContext save:&saveError]) {
+    if (![appDelegate.coreDataStack.managedObjectContext save:&saveError]) {
       NSLog(@"%@",saveError.localizedDescription);
     }
     
