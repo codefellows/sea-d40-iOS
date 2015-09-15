@@ -44,12 +44,6 @@ CGFloat const kburgerButtonHeight = 50.0;
     NSError *myError = [NSError errorWithDomain:kStackOverFlowErrorDomain code:StackOverFlowBadJSON userInfo:nil];
 
   }
-  [NSURLSession sharedSession] dataTaskWithURL:nil completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    if (error) {
-      
-    }
-    
-  }
   
   UITableViewController *mainMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
   mainMenuVC.tableView.delegate = self;
