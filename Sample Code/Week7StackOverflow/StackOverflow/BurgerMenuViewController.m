@@ -172,9 +172,6 @@ CGFloat const kburgerButtonHeight = 50.0;
       [self.topViewController.view addGestureRecognizer:self.pan];
       self.burgerButton.userInteractionEnabled = true;
     }];
-    
-    
-    
   }];
 }
 #pragma mark - UITableViewDelegate

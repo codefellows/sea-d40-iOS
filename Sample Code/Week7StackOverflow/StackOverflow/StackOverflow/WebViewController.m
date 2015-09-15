@@ -42,6 +42,8 @@
     NSString *fullTokenParameter = components.firstObject;
     NSString *token = [fullTokenParameter componentsSeparatedByString:@"="].lastObject;
     NSLog(@"%@",token);
+    [self dismissViewControllerAnimated:true completion:nil];
+    
   }
   decisionHandler(WKNavigationActionPolicyAllow);
   
