@@ -11,19 +11,26 @@
 #import "MyQuestionsViewController.h"
 #import "WebViewController.h"
 #import "Errors.h"
+#import <SafariServices/SafariServices.h>
+#import "MenuTableViewController.h"
 
 CGFloat const kburgerOpenScreenDivider = 3.0;
 CGFloat const kburgerOpenScreenMultiplier = 2.0;
 NSTimeInterval const ktimeToSlideMenuOpen = 0.3;
 CGFloat const kburgerButtonWidth = 50.0;
 CGFloat const kburgerButtonHeight = 50.0;
+static void *isDownloadingContext = &isDownloadingContext;
+
+
+
 
 @interface BurgerMenuViewController () <UITableViewDelegate>
-
+@property (strong,nonatomic) MenuTableViewController *menuVC;
 @property (strong,nonatomic) UIViewController *topViewController;
 @property (strong,nonatomic) UIButton *burgerButton;
 @property (strong,nonatomic) UIPanGestureRecognizer *pan;
 @property (strong,nonatomic) NSArray *viewControllers;
+@property (strong,nonatomic) QuestionSearchViewController *questionSearchViewController;
 
 @end
 
@@ -32,29 +39,39 @@ CGFloat const kburgerButtonHeight = 50.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-  NSError *error;
+  //NSError *error;
   
-  NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"json"];
-  NSData *data = [NSData dataWithContentsOfFile:path];
+//  NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"json"];
+//  NSData *data = [NSData dataWithContentsOfFile:path];
   
-  id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+  //id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
   
-  if (error) {
-    NSLog(@"domain: %@ code:%ld",error.domain,(long)error.code);
-    NSError *myError = [NSError errorWithDomain:kStackOverFlowErrorDomain code:StackOverFlowBadJSON userInfo:nil];
-
-  }
+  //if (error) {
+    //NSLog(@"domain: %@ code:%ld",error.domain,(long)error.code);
+    //NSError *myError = [NSError errorWithDomain:kStackOverFlowErrorDomain code:StackOverFlowBadJSON userInfo:nil];
+//
+  //}
   
-  UITableViewController *mainMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
+  MenuTableViewController *mainMenuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainMenu"];
   mainMenuVC.tableView.delegate = self;
+  mainMenuVC.title = @"Menu";
+  [mainMenuVC setValue:@"Menu" forKey:@"title"];
+  
   
   [self addChildViewController:mainMenuVC];
   mainMenuVC.view.frame = self.view.frame;
   [self.view addSubview:mainMenuVC.view];
   [mainMenuVC didMoveToParentViewController:self];
+  self.menuVC = mainMenuVC;
   
   QuestionSearchViewController *questionSearchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionSearch"];
-  MyQuestionsViewController *myQuestionsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MyQuestions"];
+  self.questionSearchViewController = questionSearchVC;
+  [questionSearchVC addObserver:self forKeyPath:NSStringFromSelector(@selector(questionSearchViewController)) options:NSKeyValueObservingOptionNew context:isDownloadingContext];
+  
+  
+  UIStoryboard *questionsStoryboard = [UIStoryboard storyboardWithName:@"MyQuestions" bundle:[NSBundle mainBundle]];
+  
+  MyQuestionsViewController *myQuestionsVC = [questionsStoryboard instantiateViewControllerWithIdentifier:@"MyQuestions"];
   self.viewControllers = @[questionSearchVC,myQuestionsVC];
   
   
@@ -82,8 +99,9 @@ CGFloat const kburgerButtonHeight = 50.0;
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   //check if you already have the token
-  WebViewController *webVC = [[WebViewController alloc] init];
-  [self presentViewController:webVC animated:true completion:nil];
+
+  
+
 }
 
 -(void)burgerButtonPressed:(UIButton *)sender {
@@ -185,6 +203,24 @@ CGFloat const kburgerButtonHeight = 50.0;
   
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+  
+  if (context == isDownloadingContext) {
+    BOOL newValue = [(NSNumber *)change[NSKeyValueChangeNewKey] boolValue];
+    if (newValue) {
+      [self.menuVC.questionSearchActivityIndicator startAnimating];
+    } else {
+      [self.menuVC.questionSearchActivityIndicator stopAnimating];
+    }
+
+  }
+}
+
+-(void)dealloc {
+  [self.questionSearchViewController removeObserver:self forKeyPath:@"isDownloading" context:isDownloadingContext];
+  
+}
+
 
 /*
 #pragma mark - Navigation
@@ -195,5 +231,7 @@ CGFloat const kburgerButtonHeight = 50.0;
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

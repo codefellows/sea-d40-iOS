@@ -13,6 +13,7 @@
 @interface QuestionSearchViewController () <UISearchBarDelegate>
 @property (strong,nonatomic) NSArray *questions;
 
+
 @end
 
 @implementation QuestionSearchViewController
@@ -28,6 +29,7 @@
 #pragma mark - UISearchBarDelegate
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+  self.isDownloading = true;
   [StackOverflowService questionsForSearchTerm:searchBar.text completionHandler:^(NSArray *results, NSError *error) {
     if (error) {
       UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
@@ -60,6 +62,7 @@
         [alertController addAction:action];
         
         [self presentViewController:alertController animated:true completion:nil];
+        self.isDownloading = false;
 
       });
     }
