@@ -217,6 +217,8 @@ static void *isDownloadingContext = &isDownloadingContext;
 }
 
 -(void)dealloc {
+  
+  [NSString stringWith]
   [self.questionSearchViewController removeObserver:self forKeyPath:@"isDownloading" context:isDownloadingContext];
   
 }
