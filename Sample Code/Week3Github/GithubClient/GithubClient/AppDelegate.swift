@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
       
     }
+    
+    GithubService.createFileOnRepo()
+    
     return true
   }
   

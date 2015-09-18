@@ -28,6 +28,63 @@ class GithubService {
     
   }
   
+  class func createFileOnRepo() {
+  let baseURL = "https://api.github.com/repos/bradleypj823/TestFromApi/contents/test2"
+  let request = NSMutableURLRequest(URL: NSURL(string: baseURL)!)
+    request.HTTPMethod = "PUT"
+    let filePath = NSBundle.mainBundle().pathForResource("go1", ofType: "html")
+   // let rawData = [NSData (contentsOfFile: <#String#>)]
+    let htmlString = 
+     let json = [
+        "message": "my commit message",
+        "committer": [
+          "name": "Brad",
+          "email": "johnson.bradley01@gmail.com"
+        ],
+        "content": "bXkgbmV3IGZpbGUgY29udGVudHM="
+    ]
+    
+    
+    
+    let data = NSJSONSerialization.dataWithJSONObject(json, options: nil, error: nil)
+    request.HTTPBody = data
+    
+    if let token = KeychainService.loadToken() {
+      request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+    }
+    
+    NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+      println(response)
+      let object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
+      println(object)
+      
+    }).resume()
+    
+    
+  }
+  
+  class func createRepo() {
+    let baseURL = "https://api.github.com/user/repos?name=TestFromApi"
+    let request = NSMutableURLRequest(URL: NSURL(string: baseURL)!)
+    if let token = KeychainService.loadToken() {
+      request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+    }
+    request.HTTPMethod = "POST"
+    
+    let json = ["name" : "TestFromApi"]
+    let data = NSJSONSerialization.dataWithJSONObject(json, options: nil, error: nil)
+    request.HTTPBody = data
+    
+    NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+      println(response)
+     let object = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
+      println(object)
+      
+    }).resume()
+    
+   
+  }
+  
   class func userForSearchTerm(searchTerm : String, userSearchCallback : (errorDescription : String?, users :[User]?) -> (Void)) {
     let baseURL = "https://api.github.com/search/users"
     let finalURL = baseURL + "?q=\(searchTerm)"

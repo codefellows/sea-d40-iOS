@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A222D6D71BAC77F400A27FD6 /* go1.1.html in Resources */ = {isa = PBXBuildFile; fileRef = A222D6D61BAC77F400A27FD6 /* go1.1.html */; };
 		A2713CE21B863044002697E2 /* UserJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE11B863044002697E2 /* UserJSONParser.swift */; };
 		A2713CE41B863498002697E2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE31B863498002697E2 /* UserCell.swift */; };
 		A2713CE71B8634D0002697E2 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2713CE51B8634D0002697E2 /* ImageResizer.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A222D6D61BAC77F400A27FD6 /* go1.1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = go1.1.html; path = "../../../../../../Documents/Web Apps/go_appengine/goroot/doc/go1.1.html"; sourceTree = "<group>"; };
 		A2713CE11B863044002697E2 /* UserJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJSONParser.swift; sourceTree = "<group>"; };
 		A2713CE31B863498002697E2 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		A2713CE51B8634D0002697E2 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				A27BCACA1B83D2BC00CD8AB9 /* AuthService.swift */,
 				A27BCAD21B851F1000CD8AB9 /* Constants.swift */,
 				A2BBE5D01B828B6B00A61387 /* RepoSearchViewController.swift */,
+				A222D6D61BAC77F400A27FD6 /* go1.1.html */,
 				A2BBE5B31B8277A100A61387 /* Images.xcassets */,
 				A2BBE5B51B8277A100A61387 /* LaunchScreen.xib */,
 				A2BBE5AA1B8277A100A61387 /* Supporting Files */,
@@ -252,6 +255,7 @@
 				A2BBE5B21B8277A100A61387 /* Main.storyboard in Resources */,
 				A2BBE5B71B8277A100A61387 /* LaunchScreen.xib in Resources */,
 				A2BBE5B41B8277A100A61387 /* Images.xcassets in Resources */,
+				A222D6D71BAC77F400A27FD6 /* go1.1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
