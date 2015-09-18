@@ -29,19 +29,28 @@ class GithubService {
   }
   
   class func createFileOnRepo() {
-  let baseURL = "https://api.github.com/repos/bradleypj823/TestFromApi/contents/test2"
+  let baseURL = "https://api.github.com/repos/bradleypj823/TestFromApi/contents/index1.html"
   let request = NSMutableURLRequest(URL: NSURL(string: baseURL)!)
     request.HTTPMethod = "PUT"
-    let filePath = NSBundle.mainBundle().pathForResource("go1", ofType: "html")
+    let filePath = NSBundle.mainBundle().pathForResource("index", ofType: "html")
    // let rawData = [NSData (contentsOfFile: <#String#>)]
-    let htmlString = 
+    let htmlString = NSString(contentsOfFile: filePath!, encoding: 0, error: nil)
+    
+    println(htmlString)
+    
+    let baseData = htmlString!.dataUsingEncoding(NSUTF8StringEncoding)
+    let baseString = baseData?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+    println(baseString)
+    
+    
      let json = [
+      "branch" : "gh-pages",
         "message": "my commit message",
         "committer": [
           "name": "Brad",
           "email": "johnson.bradley01@gmail.com"
         ],
-        "content": "bXkgbmV3IGZpbGUgY29udGVudHM="
+        "content": baseString!
     ]
     
     
@@ -59,8 +68,6 @@ class GithubService {
       println(object)
       
     }).resume()
-    
-    
   }
   
   class func createRepo() {

@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A20EF7101BA9ED080061A076 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20EF70F1BA9ED080061A076 /* MenuTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A20EF7101BA9ED080061A076 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20EF70F1BA9ED080061A076 /* MenuTableViewController.m */; };
 		A20EF7131BAA0AA60061A076 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A20EF7121BAA0AA60061A076 /* ProfileViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A20EF7151BAA20960061A076 /* MyQuestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20EF7141BAA20960061A076 /* MyQuestions.storyboard */; settings = {ASSET_TAGS = (); }; };
+		A20EF7151BAA20960061A076 /* MyQuestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20EF7141BAA20960061A076 /* MyQuestions.storyboard */; };
 		A2145EA61BA8BE9D00DEBDDF /* StackOverflowService.m in Sources */ = {isa = PBXBuildFile; fileRef = A2145EA51BA8BE9D00DEBDDF /* StackOverflowService.m */; };
+		A222D6DE1BACB22900A27FD6 /* BinarySearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = A222D6DD1BACB22900A27FD6 /* BinarySearchTree.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A222D6E11BACB23300A27FD6 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = A222D6E01BACB23300A27FD6 /* Node.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A291435E1BA7675200D8CDB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A291435D1BA7675200D8CDB0 /* main.m */; };
 		A29143611BA7675200D8CDB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A29143601BA7675200D8CDB0 /* AppDelegate.m */; };
 		A29143641BA7675200D8CDB0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A29143631BA7675200D8CDB0 /* ViewController.m */; };
@@ -24,8 +26,8 @@
 		A291438C1BA77C5F00D8CDB0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A291438B1BA77C5F00D8CDB0 /* WebViewController.m */; };
 		A291438E1BA784B600D8CDB0 /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = A291438D1BA784B600D8CDB0 /* Test.json */; };
 		A29143911BA7882000D8CDB0 /* Errors.m in Sources */ = {isa = PBXBuildFile; fileRef = A29143901BA7882000D8CDB0 /* Errors.m */; };
-		A2E800021BA8D05300447C33 /* QuestionJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E800011BA8D05300447C33 /* QuestionJSONParser.m */; settings = {ASSET_TAGS = (); }; };
-		A2E800051BA8D15900447C33 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E800041BA8D15900447C33 /* Question.m */; settings = {ASSET_TAGS = (); }; };
+		A2E800021BA8D05300447C33 /* QuestionJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E800011BA8D05300447C33 /* QuestionJSONParser.m */; };
+		A2E800051BA8D15900447C33 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = A2E800041BA8D15900447C33 /* Question.m */; };
 		B5C44EAF4E1B69DF580227B8 /* libPods-StackOverflow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4753DDD59A95F3C087A226A1 /* libPods-StackOverflow.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,10 @@
 		A20EF7141BAA20960061A076 /* MyQuestions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyQuestions.storyboard; path = ../MyQuestions.storyboard; sourceTree = "<group>"; };
 		A2145EA41BA8BE9D00DEBDDF /* StackOverflowService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowService.h; sourceTree = "<group>"; };
 		A2145EA51BA8BE9D00DEBDDF /* StackOverflowService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowService.m; sourceTree = "<group>"; };
+		A222D6DC1BACB22900A27FD6 /* BinarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearchTree.h; sourceTree = "<group>"; };
+		A222D6DD1BACB22900A27FD6 /* BinarySearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearchTree.m; sourceTree = "<group>"; };
+		A222D6DF1BACB23300A27FD6 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		A222D6E01BACB23300A27FD6 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
 		A29143581BA7675200D8CDB0 /* StackOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A291435C1BA7675200D8CDB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A291435D1BA7675200D8CDB0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -143,6 +149,10 @@
 				A29143601BA7675200D8CDB0 /* AppDelegate.m */,
 				A29143811BA7677F00D8CDB0 /* BurgerMenuViewController.h */,
 				A29143821BA7677F00D8CDB0 /* BurgerMenuViewController.m */,
+				A222D6DC1BACB22900A27FD6 /* BinarySearchTree.h */,
+				A222D6DD1BACB22900A27FD6 /* BinarySearchTree.m */,
+				A222D6DF1BACB23300A27FD6 /* Node.h */,
+				A222D6E01BACB23300A27FD6 /* Node.m */,
 				A291438F1BA7882000D8CDB0 /* Errors.h */,
 				A29143901BA7882000D8CDB0 /* Errors.m */,
 				A291438D1BA784B600D8CDB0 /* Test.json */,
@@ -342,7 +352,9 @@
 				A291438C1BA77C5F00D8CDB0 /* WebViewController.m in Sources */,
 				A29143641BA7675200D8CDB0 /* ViewController.m in Sources */,
 				A20EF7101BA9ED080061A076 /* MenuTableViewController.m in Sources */,
+				A222D6E11BACB23300A27FD6 /* Node.m in Sources */,
 				A2E800021BA8D05300447C33 /* QuestionJSONParser.m in Sources */,
+				A222D6DE1BACB22900A27FD6 /* BinarySearchTree.m in Sources */,
 				A29143891BA7749B00D8CDB0 /* MyQuestionsViewController.m in Sources */,
 				A29143611BA7675200D8CDB0 /* AppDelegate.m in Sources */,
 				A29143861BA768EA00D8CDB0 /* QuestionSearchViewController.m in Sources */,
